@@ -19,9 +19,15 @@ which the server should listen for incoming requests. By assigning it to the `po
 server will listen on the specified port when it is started. */
 const port = process.env.PORT;
 
+app.use(express.json());
+
 /* `app.use('/api/tasks', tasksRouter);` is setting up a middleware function for the specified route
 '/api/tasks'. */
 app.use('/api/tasks', tasksRouter);
+
+
+
+
 
 /* `app.listen(port, () => { console.info(`Server running at `); });` is starting the server and
 listening for incoming requests on the specified port. */
