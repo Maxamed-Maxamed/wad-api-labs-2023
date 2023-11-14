@@ -36,11 +36,15 @@ router.post('/', (req, res) => {
         description,
         deadline,
         priority,
-        done
+        done, 
+        created_at:new Date().toISOString(),
+        updated_at: new Date().toISOString()
+
     };
     tasksData.tasks.push(newTask);
     res.status(201).json(newTask);
     tasksData.total_results++;
+
 });
 
 
