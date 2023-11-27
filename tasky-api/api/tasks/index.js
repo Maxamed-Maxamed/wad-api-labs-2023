@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
         priority,
         done, 
         created_at:new Date().toISOString(),
-        updated_at: new Date().toISOString()
+        updated_at:new Date().toISOString()
 
     };
     tasksData.tasks.push(newTask);
