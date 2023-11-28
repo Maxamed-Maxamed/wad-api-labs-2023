@@ -1,6 +1,10 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import tasksRouter from './api/tasks';
+// import db from './db';
+import './db';
+
+
 
 dotenv.config();/* The `
 ` is a line break or newline character. It is used to start a new line in the code
@@ -23,6 +27,8 @@ app.use(express.json());
 
 /* `app.use('/api/tasks', tasksRouter);` is setting up a middleware function for the specified route
 '/api/tasks'. */
+
+// Mount tasks router middleware to handle requests to /api/tasks route
 app.use('/api/tasks', tasksRouter);
 
 
