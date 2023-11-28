@@ -6,21 +6,19 @@ import './db';
 
 
 
-dotenv.config();/* The `
-` is a line break or newline character. It is used to start a new line in the code
-or in the output. In this case, it is used to separate the different parts of the
-code for better readability. */
+dotenv.config();
+const errHandler = (err, req, res, next) => {
+  /* if the error in development then send stack trace to display whole error,
+  if it's in production then just send error message  */
+  if(process.env.NODE_ENV === 'production') {
+    return res.status(500).send(`Something went wrong!`);
+  }
+  res.status(500).send(`Hey!! You caught the error 👍👍. Here's the details: ${err.stack} `);
+};
 
-
-/* `const app = express();` is creating an instance of the Express application. The `express()`
-function is a top-level function exported by the Express module, and it returns a new Express
-application. This `app` object is used to configure and run the server. */
 const app = express();
 
-/* `const port = process.env.PORT;` is assigning the value of the `PORT` environment variable to the
-`port` constant. The `PORT` environment variable is typically used to specify the port number on
-which the server should listen for incoming requests. By assigning it to the `port` constant, the
-server will listen on the specified port when it is started. */
+
 const port = process.env.PORT;
 
 app.use(express.json());
@@ -31,6 +29,7 @@ app.use(express.json());
 // Mount tasks router middleware to handle requests to /api/tasks route
 app.use('/api/tasks', tasksRouter);
 
+app.use(errHandler);
 
 
 
