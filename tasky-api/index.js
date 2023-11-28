@@ -3,7 +3,7 @@ import express from 'express';
 import tasksRouter from './api/tasks';
 // import db from './db';
 import './db';
-
+import usersRouter from './api/users';
 
 
 dotenv.config();
@@ -23,19 +23,17 @@ const port = process.env.PORT;
 
 app.use(express.json());
 
-/* `app.use('/api/tasks', tasksRouter);` is setting up a middleware function for the specified route
-'/api/tasks'. */
 
-// Mount tasks router middleware to handle requests to /api/tasks route
+
 app.use('/api/tasks', tasksRouter);
 
+
+app.use('/api/users', usersRouter);
 app.use(errHandler);
 
 
 
 
-/* `app.listen(port, () => { console.info(`Server running at `); });` is starting the server and
-listening for incoming requests on the specified port. */
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
 });
