@@ -9,7 +9,7 @@ import LoginPage from "./pages/loginPage";
 import AuthContextProvider from "./contexts/authContext";
 import ProtectedRoutes from "./protectedRoutes";
 import Header from "./components/siteHeader";
-
+import SignUpPage from "./pages/signUpPage";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -39,6 +39,7 @@ const App = () => {
           </ul>
           <Routes>
             <Route path="/" element={<PublicPage />} />
+            <Route path="/signup" element={ <SignUpPage /> } />
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/movies" element={<MoviesPage />} />
