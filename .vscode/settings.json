@@ -1,0 +1,7 @@
+{
+    "docwriter.custom.author": "Max",
+    "docwriter.progress.trackClasses": true,
+    "docwriter.progress.trackTypes": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "aiXcoder.showTrayIcon": true
+}

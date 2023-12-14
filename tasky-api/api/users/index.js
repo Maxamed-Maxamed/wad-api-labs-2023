@@ -1,5 +1,15 @@
 import express from 'express';
 import User from './userModel';
+import asyncHandler from 'express-async-handler';
+
+
+
+
+
+
+
+
+
 
 const router = express.Router(); // eslint-disable-line
 
@@ -52,5 +62,31 @@ router.put('/:id', async (req, res) => {
         res.status(404).json({ code: 404, msg: 'Unable to find User' });
     }
 });
+
+
+
+
+
+// Delete User
+router.delete('/:id', async (req, res) => {  
+    
+    const result = await User.deleteOne({
+        _id: req.params.id,
+    });
+    if (result.deletedCount) {
+        res.status(200).json({ code:200, msg: 'User Deleted Sucessfully' });
+    } else {
+        res.status(404).json({ code: 404, msg: 'Unable to find User' });
+    }
+});
+
+
+
+
+
+
+
+
+
 
 export default router;
